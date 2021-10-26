@@ -1,0 +1,9 @@
+<suite name="Test">
+
+<test name= "Driver_Class" parallel="none">
+<classes>
+<class name= "test.Driver_Class"  />
+</classes>
+</test>
+
+</suite>
