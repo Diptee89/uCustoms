@@ -15,12 +15,12 @@ import org.openqa.selenium.WebDriver;
 
 public class ExcelUtils {
 
-	public static WebDriver driver;
-	public static Workbook wb=null;
-	public static Sheet sh;
-	public static Row row;
-	public static Cell cell;
-	public static FileInputStream is;
+	private static WebDriver driver;
+	private static Workbook wb=null;
+	private static Sheet sh;
+	private static Row row;
+	private static Cell cell;
+	private static FileInputStream is;
 
 	public static void setExcelFile(String Path, String SheetName) throws Exception {
 
@@ -28,7 +28,7 @@ public class ExcelUtils {
 
 			String fileType = Path.substring(Path.indexOf("."));
 			File f = new File(Path);
-			FileInputStream is = new FileInputStream(f);
+			is = new FileInputStream(f);
 			if (fileType.equals(".xls"))
 				wb = new HSSFWorkbook(is);
 			else if (fileType.equals(".xlsx"))
@@ -39,23 +39,6 @@ public class ExcelUtils {
 			System.out.println(e.getMessage());
 		}
 	}
-
-	public static String getCellData(int intRowNum, int intCellNum) throws IOException {
-
-		try {
-			cell = sh.getRow(intRowNum).getCell(intCellNum);
-			String CellData = cell.getStringCellValue(); // getStringCellValue() method : To read String value
-
-			return CellData;
-		} catch (Exception e) {
-			
-			int CellIntData =(int)cell.getNumericCellValue();
-			String CellStrData =String.valueOf(CellIntData);
-			return CellStrData;
-			
-		}
-	}
-
 	public static void setCellData(String Path, String Result, int RowNum, int ColNum) throws Exception {
 
 		try {
@@ -83,6 +66,21 @@ public class ExcelUtils {
 
 	}
 
+	public static String getCellData(int intRowNum, int intCellNum) throws IOException {
+
+		try {
+			cell = sh.getRow(intRowNum).getCell(intCellNum);
+			String CellData = cell.getStringCellValue(); // getStringCellValue() method : To read String value
+
+			return CellData;
+		} catch (Exception e) {
+			
+			int CellIntData =(int)cell.getNumericCellValue();
+			String CellStrData =String.valueOf(CellIntData);
+			return CellStrData;
+			
+		}
+	}
 	public static int getRowCount(String sheetName) {
 		int index = wb.getSheetIndex(sheetName);
 		sh = wb.getSheetAt(index);
@@ -90,7 +88,6 @@ public class ExcelUtils {
 
 		return number;
 	}
-
 	public static int getColumnCount(String sheetName) {
 
 		sh = wb.getSheet(sheetName);
@@ -99,7 +96,4 @@ public class ExcelUtils {
 		return row.getLastCellNum();
 
 	}
-
-	
-	
 }

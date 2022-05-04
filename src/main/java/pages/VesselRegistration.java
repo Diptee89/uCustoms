@@ -486,7 +486,7 @@ public class VesselRegistration {
 		}
 	}
 
-	public static void setPortOfReg(String testData) throws Exception {
+	public static void setPortOfReg(String testData)  {
 		try {
 			txtPortOfReg.clear();
 			txtPortOfReg.sendKeys(testData);
@@ -500,7 +500,7 @@ public class VesselRegistration {
 		}
 	}
 
-	public static void clickCertRegDateDatePicker(String testData) throws Exception {
+	public static void clickCertRegDateDatePicker(String testData)  {
 		try {
 			txtCertRegDateDatePicker.click();
 			btnToday.click();
@@ -1080,7 +1080,7 @@ public class VesselRegistration {
 		}
 	}
 
-	public static void clickSubmit_btn(String testData) throws Exception {
+	public static void clickSubmit_btn(String testData) {
 		try {
 			btnSubmit.click();
 			Thread.sleep(500);

@@ -30,7 +30,9 @@ public class OR {
 
 			driver = new ChromeDriver();
 			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+			driver.manage().deleteAllCookies();
+			driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
 		} catch (Exception e) {
 			e.getMessage();
@@ -42,6 +44,7 @@ public class OR {
 		try {
 			JavascriptExecutor jse =(JavascriptExecutor) driver; 
 			jse.executeScript("window.scrollBy(0,1000)");
+			
 		} catch (Exception e) {
 			e.getMessage();
 		}
@@ -71,6 +74,7 @@ public class OR {
 			StringSelection ss = new StringSelection("C:\\TFS\\Automation(Selenium)\\Maven_TestNG_POM_POI\\uCustoms\\src\\main\\java\\config\\Img.jpg");
 			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
 			Thread.sleep(1000);
+			
 			Robot robot = new Robot();
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
